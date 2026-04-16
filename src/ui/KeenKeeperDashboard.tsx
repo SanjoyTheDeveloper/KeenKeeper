@@ -67,15 +67,13 @@ function StatCard({ value, label }: { value: number; label: string }) {
 
 function ContactCard({ contact }: { contact: Contact }) {
     return (
-        <div className="rounded-sm border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-md">
+        <div className="rounded-sm border border-slate-200 bg-white p-6 transition hover:-translate-y-1 hover:shadow-md group-hover:border-slate-300 cursor-pointer">
             <div className="text-center">
-
-
                 <div className="flex justify-center">
                     <img src={contact.picture} alt={contact.name} className="h-16 w-16 rounded-full object-cover" />
-
                 </div>
-                <p className="mt-4 text-sm leading-6 text-slate-600">{contact.bio}</p>
+                <p className="mt-4 text-lg font-semibold text-slate-900">{contact.name}</p>
+                <p className="mt-1 text-sm text-slate-500">{contact.days_since_contact}d ago</p>
                 <div className="mt-4 flex justify-center flex-wrap gap-2">
                     {contact.tags.map((tag) => (
                         <span
@@ -90,9 +88,7 @@ function ContactCard({ contact }: { contact: Contact }) {
                     <span className={`inline-flex rounded-full px-3 py-1 text-sm font-semibold ${statusClasses[contact.status] ?? "bg-slate-100 text-slate-700"}`}>
                         {contact.status}
                     </span>
-
                 </div>
-
             </div>
         </div>
     );
@@ -145,7 +141,9 @@ export default function KeenKeeperDashboard() {
                             </div>
                             <div className="mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
                                 {shownContacts.map((contact) => (
-                                    <ContactCard key={contact.id} contact={contact} />
+                                    <Link key={contact.id} href={`/profile/${contact.id}`} className="group">
+                                        <ContactCard contact={contact} />
+                                    </Link>
                                 ))}
                             </div>
                         </div>
@@ -167,7 +165,7 @@ export default function KeenKeeperDashboard() {
                 </div>
                 <div className="mt-8 flex gap-4 text-slate-400 justify-between border-t border-slate-600 pt-6 mx-auto max-w-7xl text-sm p-1 lg:p-0 lg:text-sm">
                     <div>
-                                <span>© 2026 KeenKeeper. All rights reserved.</span>
+                        <span>© 2026 KeenKeeper. All rights reserved.</span>
                     </div>
                     <div className="flex gap-4">
                         <span className="">Privacy Policy</span>
