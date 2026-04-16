@@ -1,0 +1,227 @@
+[
+    {
+        "id": 1,
+        "name": "John Doe",
+        "picture": "https://randomuser.me/api/portraits/men/32.jpg",
+        "email": "john@example.com",
+        "days_since_contact": 12,
+        "status": "overdue",
+        "tags": [
+            "college",
+            "close friend"
+        ],
+        "bio": "Met in university. Love hiking together.",
+        "goal": 14,
+        "next_due_date": "2025-07-20"
+    },
+    {
+        "id": 2,
+        "name": "Mia Patel",
+        "picture": "https://randomuser.me/api/portraits/women/65.jpg",
+        "email": "mia.patel@example.com",
+        "days_since_contact": 5,
+        "status": "due",
+        "tags": [
+            "work",
+            "project"
+        ],
+        "bio": "Graphic designer from the agency. Collaborating on the new campaign.",
+        "goal": 10,
+        "next_due_date": "2025-04-21"
+    },
+    {
+        "id": 3,
+        "name": "Carlos Ramirez",
+        "picture": "https://randomuser.me/api/portraits/men/75.jpg",
+        "email": "carlos.r@example.com",
+        "days_since_contact": 22,
+        "status": "overdue",
+        "tags": [
+            "family",
+            "cousin"
+        ],
+        "bio": "Cousin who lives two states away. We plan road trips every summer.",
+        "goal": 18,
+        "next_due_date": "2025-05-10"
+    },
+    {
+        "id": 4,
+        "name": "Amira Hassan",
+        "picture": "https://randomuser.me/api/portraits/women/47.jpg",
+        "email": "amira.hassan@example.com",
+        "days_since_contact": 3,
+        "status": "on track",
+        "tags": [
+            "book club",
+            "friend"
+        ],
+        "bio": "We meet monthly to discuss books and new cafes.",
+        "goal": 7,
+        "next_due_date": "2025-04-18"
+    },
+    {
+        "id": 5,
+        "name": "Noah Johnson",
+        "picture": "https://randomuser.me/api/portraits/men/12.jpg",
+        "email": "noah.johnson@example.com",
+        "days_since_contact": 30,
+        "status": "overdue",
+        "tags": [
+            "neighbor",
+            "gym buddy"
+        ],
+        "bio": "Lives nearby and often runs together in the park.",
+        "goal": 21,
+        "next_due_date": "2025-05-05"
+    },
+    {
+        "id": 6,
+        "name": "Li Wei",
+        "picture": "https://randomuser.me/api/portraits/men/56.jpg",
+        "email": "li.wei@example.com",
+        "days_since_contact": 9,
+        "status": "on track",
+        "tags": [
+            "school",
+            "mentor"
+        ],
+        "bio": "Former professor and mentor in analytics. Always generous with advice.",
+        "goal": 12,
+        "next_due_date": "2025-04-25"
+    },
+    {
+        "id": 7,
+        "name": "Sofia Romano",
+        "picture": "https://randomuser.me/api/portraits/women/33.jpg",
+        "email": "sofia.romano@example.com",
+        "days_since_contact": 16,
+        "status": "due",
+        "tags": [
+            "travel",
+            "friend"
+        ],
+        "bio": "Met on a trip abroad. Shares travel plans and food recommendations.",
+        "goal": 14,
+        "next_due_date": "2025-04-28"
+    },
+    {
+        "id": 8,
+        "name": "Ethan Brooks",
+        "picture": "https://randomuser.me/api/portraits/men/88.jpg",
+        "email": "ethan.brooks@example.com",
+        "days_since_contact": 2,
+        "status": "on track",
+        "tags": [
+            "startup",
+            "partner"
+        ],
+        "bio": "Co-founder on the new app project. We sync twice a week.",
+        "goal": 6,
+        "next_due_date": "2025-04-17"
+    },
+    {
+        "id": 9,
+        "name": "Priya Singh",
+        "picture": "https://randomuser.me/api/portraits/women/52.jpg",
+        "email": "priya.singh@example.com",
+        "days_since_contact": 19,
+        "status": "overdue",
+        "tags": [
+            "family",
+            "aunt"
+        ],
+        "bio": "Aunt who loves to share new recipes and family stories.",
+        "goal": 16,
+        "next_due_date": "2025-05-01"
+    },
+    {
+        "id": 10,
+        "name": "Noelle Carter",
+        "picture": "https://randomuser.me/api/portraits/women/14.jpg",
+        "email": "noelle.carter@example.com",
+        "days_since_contact": 11,
+        "status": "due",
+        "tags": [
+            "music",
+            "bandmate"
+        ],
+        "bio": "Bandmate from college. We still rehearse and catch up often.",
+        "goal": 13,
+        "next_due_date": "2025-04-23"
+    },
+    {
+        "id": 11,
+        "name": "Avery Nguyen",
+        "picture": "https://randomuser.me/api/portraits/women/21.jpg",
+        "email": "avery.nguyen@example.com",
+        "days_since_contact": 7,
+        "status": "on track",
+        "tags": [
+            "colleague",
+            "mentor"
+        ],
+        "bio": "Works in product design and often gives feedback on prototypes.",
+        "goal": 9,
+        "next_due_date": "2025-04-24"
+    },
+    {
+        "id": 12,
+        "name": "Marcus Lee",
+        "picture": "https://randomuser.me/api/portraits/men/23.jpg",
+        "email": "marcus.lee@example.com",
+        "days_since_contact": 20,
+        "status": "overdue",
+        "tags": [
+            "friend",
+            "gaming"
+        ],
+        "bio": "We met through a gaming group and still plan monthly sessions.",
+        "goal": 17,
+        "next_due_date": "2025-05-02"
+    },
+    {
+        "id": 13,
+        "name": "Naomi Flores",
+        "picture": "https://randomuser.me/api/portraits/women/44.jpg",
+        "email": "naomi.flores@example.com",
+        "days_since_contact": 4,
+        "status": "due",
+        "tags": [
+            "fitness",
+            "trainer"
+        ],
+        "bio": "My personal trainer and accountability partner for wellness goals.",
+        "goal": 8,
+        "next_due_date": "2025-04-20"
+    },
+    {
+        "id": 14,
+        "name": "Julian Brooks",
+        "picture": "https://randomuser.me/api/portraits/men/45.jpg",
+        "email": "julian.brooks@example.com",
+        "days_since_contact": 13,
+        "status": "due",
+        "tags": [
+            "volunteer",
+            "community"
+        ],
+        "bio": "We volunteer together at the local community garden.",
+        "goal": 15,
+        "next_due_date": "2025-04-29"
+    },
+    {
+        "id": 15,
+        "name": "Sara Kim",
+        "picture": "https://randomuser.me/api/portraits/women/69.jpg",
+        "email": "sara.kim@example.com",
+        "days_since_contact": 18,
+        "status": "overdue",
+        "tags": [
+            "family",
+            "sister"
+        ],
+        "bio": "Younger sister who checks in regularly but lives in another city.",
+        "goal": 20,
+        "next_due_date": "2025-05-04"
+    }
+]
