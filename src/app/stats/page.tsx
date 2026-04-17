@@ -26,18 +26,18 @@ export default function StatsPage() {
             <main className="mx-auto max-w-7xl px-4 pb-16 pt-28 sm:px-6 lg:px-8">
                 <div className="rounded-3xl  p-10 shadow-md shadow-slate-200/40">
                     <div className="mb-8">
-                        <h1 className="text-5xl font-semibold tracking-tight text-slate-950">Friendship Analytics</h1>
+                        <h1 className="text-2xl lg:text-5xl font-semibold tracking-tight text-slate-950">Friendship Analytics</h1>
                     </div>
 
                     <div className="rounded-sm border border-slate-200 bg-slate-50 p-8 shadow-sm">
                         <div>
-                            <p className="text-xl font-semibold ">By Interaction Type</p>
+                            <p className="text-sm lg:text-2xl font-semibold ">By Interaction Type</p>
 
                         </div>
                         <div className="flex flex-col items-center justify-center mt-6">
 
 
-                            <div className="relative mx-auto flex items-center justify-center  h-72 w-72 sm:mx-0">
+                            <div className="relative mx-auto flex items-center justify-center lg:h-72 lg:w-72  h-46 w-46 sm:mx-0">
                                 <div className="absolute inset-0 rounded-full border border-slate-200 bg-white" style={ringStyle} />
                                 <div className="absolute inset-6 rounded-full bg-slate-100" />
                                 <div className="absolute inset-16 flex items-center justify-center rounded-full bg-white text-center">
