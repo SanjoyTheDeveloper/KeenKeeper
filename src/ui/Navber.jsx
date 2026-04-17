@@ -20,7 +20,7 @@ export function Navber() {
             <div className="mx-auto flex max-w-9xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
                 <div className="flex items-center gap-3">
                     <div className="rounded-3xl px-4 py-2 text-lg">
-                        <img src="/assets/logo.png" alt="KeenKeeper logo" className="h-8 w-auto" />
+                        <img src="/assets/logo.png" alt="KeenKeeper logo" className="lg:h-8 lg:w-auto w-22" />
                     </div>
                 </div>
                 <nav className="flex items-center gap-2">

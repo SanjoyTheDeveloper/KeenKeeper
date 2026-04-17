@@ -120,9 +120,9 @@ export default function ProfilePage() {
                                 <div className={` inline-flex rounded-full px-4 py-2 text-sm font-semibold shadow-sm shadow-slate-200/50 ${statusClasses[contact.status] ?? "bg-slate-100 text-slate-700"}`}>
                                     {contact.status}
                                 </div>
-                                <div className="flex flex-wrap justify-center gap-2">
+                                <div className="grid flex-wrap justify-center gap-2">
                                     {contact.tags.map((tag) => (
-                                        <span key={tag} className="rounded-full px-3 py-1 text-xs font-semibold bg-green-100 text-green-800">
+                                        <span key={tag} className="rounded-full px-3 py-1 text-xs font-semibold  text-green-800">
                                             {tag}
                                         </span>
                                     ))}
@@ -152,7 +152,7 @@ export default function ProfilePage() {
                     <section className="space-y-6 flex-1 rounded-sm gap-6 p-6">
 
 
-                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
                             <div className="rounded-sm border border-slate-200 bg-slate-50 p-6 text-center">
 
                                 <p className="mt-4 text-3xl font-semibold text-slate-900">{contact.days_since_contact}</p>
