@@ -78,6 +78,26 @@ export default function TimelinePage() {
                     )}
                 </div>
             </main>
+            <footer className="border-t border-slate-200 bg-green-900 py-10 text-center text-white">
+                <img src="/assets/logo-xl.png" alt="KeenKeeper logo" className="mx-auto mb-4 h-12 w-auto" />
+                <p className="mt-3 text-sm text-slate-400">Your personal shelf of meaningful connections. Browse, tend, and nurture the relationships that matter most.</p>
+                <div className="mt-5"><h1>Social Links</h1></div>
+                <div className="text-white flex justify-center gap-4 mt-3">
+                    <img src="/assets/instagram.png" alt="Instagram" />
+                    <img src="/assets/facebook.png" alt="Facebook" />
+                    <img src="/assets/twitter.png" alt="Twitter" />
+                </div>
+                <div className="mt-8 flex gap-4 text-slate-400 justify-between border-t border-slate-600 pt-6 mx-auto max-w-7xl text-sm p-1 lg:p-0 lg:text-sm">
+                    <div>
+                        <span>© 2026 KeenKeeper. All rights reserved.</span>
+                    </div>
+                    <div className="flex gap-4">
+                        <span>Privacy Policy</span>
+                        <span>Terms of Service</span>
+                        <span>Cookies</span>
+                    </div>
+                </div>
+            </footer>
         </div>
     );
 }
