@@ -1,14 +1,12 @@
-import fs from "fs/promises";
-import path from "path";
-import Link from "next/link";
-import { notFound } from "next/navigation";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation";
 import { Navber } from "@/src/ui/Navber";
 import { BiPhoneCall } from "react-icons/bi";
 import { MdOutlineTextsms } from "react-icons/md";
 import { IoVideocamOutline } from "react-icons/io5";
-
-
-import { BiVideo } from "react-icons/bi";
+import { addTimelineEntry } from "@/src/lib/timeline";
 
 type Contact = {
     id: number;
@@ -34,19 +32,70 @@ const statusClasses: Record<string, string> = {
     "on track": "bg-emerald-500/10 text-emerald-700",
 };
 
-async function getContact(id: string): Promise<Contact | undefined> {
-    const filePath = path.join(process.cwd(), "public", "contacts.json");
-    const content = await fs.readFile(filePath, "utf8");
-    const contacts: Contact[] = JSON.parse(content);
-    return contacts.find((contact) => contact.id === Number(id));
-}
+type Toast = {
+    title: string;
+    message: string;
+};
 
-export default async function ProfilePage({ params }: { params: Promise<{ id: string }> }) {
-    const { id } = await params;
-    const contact = await getContact(id);
+export default function ProfilePage() {
+    const params = useParams();
+    const [contact, setContact] = useState<Contact | null>(null);
+    const [toast, setToast] = useState<Toast | null>(null);
+
+    useEffect(() => {
+        if (!params?.id) return;
+
+        fetch("/contacts.json")
+            .then((res) => res.json())
+            .then((data: Contact[]) => {
+                const found = data.find((item) => item.id === Number(params.id));
+                setContact(found ?? null);
+            })
+            .catch(() => setContact(null));
+    }, [params?.id]);
+
+    useEffect(() => {
+        if (!toast) return;
+        const timer = window.setTimeout(() => setToast(null), 2800);
+        return () => window.clearTimeout(timer);
+    }, [toast]);
+
+    const handleToast = (title: string, message: string) => {
+        setToast({ title, message });
+    };
+
+    const handleQuickAction = (type: "Call" | "Text" | "Video") => {
+        if (!contact) return;
+        const title = `${type} with ${contact.name}`;
+        addTimelineEntry({
+            type,
+            title,
+            contact: contact.name,
+            date: new Date().toISOString(),
+        });
+        handleToast(title, "Added to Timeline");
+    };
+
+    const handleSnooze = () => {
+        handleToast("Snoozed", "Contact snoozed for 2 weeks.");
+    };
+
+    const handleArchive = () => {
+        handleToast("Archived", "Contact archived.");
+    };
+
+    const handleDelete = () => {
+        handleToast("Deleted", "Contact deleted.");
+    };
 
     if (!contact) {
-        notFound();
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-slate-100 text-slate-950">
+                <div className="rounded-xl border border-slate-200 bg-white px-8 py-10 text-center shadow-sm">
+                    <p className="text-lg font-semibold text-slate-900">Loading contact...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -86,13 +135,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
 
                         </aside>
                         <div className="grid gap-3 mt-2 ">
-                            <button className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-emerald-800">
+                            <button onClick={handleSnooze} className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-emerald-800">
                                 snoze 2 weeks
                             </button>
-                            <button className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100">
+                            <button onClick={handleArchive} className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100">
                                 Archive
                             </button>
-                            <button className="rounded-sm border border-slate-200 bg-slate-50  px-4 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-100">
+                            <button onClick={handleDelete} className="rounded-sm border border-slate-200 bg-slate-50  px-4 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-100">
                                 Delete
                             </button>
                         </div>
@@ -142,19 +191,26 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
 
                             </div>
                             <div className="mt-3 flex justify-between  text-sm text-slate-500     ">
-                                <div className="bg-slate-100 px-20 py-4 rounded-sm flex flex-col items-center">
-                                    <span className="text-xl"><BiPhoneCall /></span>
-                                    <h1>Call</h1>
-                                </div>
-                                <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
-                                    <span className="text-xl"><MdOutlineTextsms /></span>
-                                    <h1>Text</h1>
-                                </div>
-                                <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
-                                    <span className="text-xl"><IoVideocamOutline />
-                                    </span>
-                                    <h1>Video</h1>
-                                </div>
+                                <button onClick={() => handleQuickAction("Call")} className="cursor-pointer">
+                                    <div className="bg-slate-100 px-20 py-4 rounded-sm flex flex-col items-center">
+
+                                        <span className="text-xl"><BiPhoneCall /></span>
+                                        <h1>Call</h1>
+                                    </div>
+                                </button>
+                                <button onClick={() => handleQuickAction("Text")} className="cursor-pointer">
+                                    <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
+                                        <span className="text-xl"><MdOutlineTextsms /></span>
+                                        <h1>Text</h1>
+                                    </div>
+                                </button>
+                                <button onClick={() => handleQuickAction("Video")} className="cursor-pointer">
+                                    <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
+                                        <span className="text-xl"><IoVideocamOutline />
+                                        </span>
+                                        <h1>Video</h1>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                     </section>
@@ -181,6 +237,13 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
                     </div>
                 </div>
             </footer>
+
+            {toast ? (
+                <div className="fixed bottom-6 right-6 z-50 rounded-2xl border border-slate-200 bg-white px-5 py-4 shadow-xl shadow-slate-900/10">
+                    <p className="text-sm font-semibold text-slate-900">{toast.title}</p>
+                    <p className="mt-1 text-sm text-slate-600">{toast.message}</p>
+                </div>
+            ) : null}
         </div>
     );
 }
