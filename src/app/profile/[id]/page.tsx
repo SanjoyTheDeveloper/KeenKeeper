@@ -3,6 +3,12 @@ import path from "path";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Navber } from "@/src/ui/Navber";
+import { BiPhoneCall } from "react-icons/bi";
+import { MdOutlineTextsms } from "react-icons/md";
+import { IoVideocamOutline } from "react-icons/io5";
+
+
+import { BiVideo } from "react-icons/bi";
 
 type Contact = {
     id: number;
@@ -48,44 +54,43 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
             <Navber />
 
             <main className="flex-1 mx-auto max-w-8xl mt-20 px-4 py-10 sm:px-6 lg:px-8">
-              
+
 
                 <div className="grid gap-8 lg:grid-cols-[320px_1fr]">
                     <div>
 
-                    
-                    <aside className="space-y-6 rounded-sm border border-slate-200 bg-white p-6 shadow-sm">
-                        <div className="space-y-6 text-center">
-                            <div className="mx-auto flex h-36 w-36 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-50">
-                                <img src={contact.picture} alt={contact.name} className="h-full w-full object-cover" />
-                            </div>
-                            <div>
-                                <p className="text-2xl font-semibold text-slate-900">{contact.name}</p>
-                                
-                            </div>
-                            <div className={`mt-2 inline-flex rounded-full px-4 py-2 text-sm font-semibold shadow-sm shadow-slate-200/50 ${statusClasses[contact.status] ?? "bg-slate-100 text-slate-700"}`}>
-                                {contact.status}
-                            </div>
-                            <div className="flex flex-wrap justify-center gap-2">
-                                {contact.tags.map((tag) => (
-                                    <span key={tag} className="rounded-full px-3 py-1 text-xs font-semibold bg-green-100 text-green-800">
-                                        {tag}
-                                    </span>
-                                ))}
-                                <span>{contact.bio}</span>
-                                <span>{contact.email}</span>                      
-                                </div>
-                            
-                        </div>
 
-                        
-                    </aside>
-                    <div className="grid gap-3 mt-2 ">
+                        <aside className="space-y-4 rounded-sm border border-slate-200 bg-white p-6 shadow-sm">
+                            <div className="space-y-4 text-center">
+                                <div className="mx-auto flex h-20 w-18 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-50">
+                                    <img src={contact.picture} alt={contact.name} className="h-full w-full object-cover" />
+                                </div>
+                                <div>
+                                    <p className="text-lg font-semibold text-slate-900">{contact.name}</p>
+                                </div>
+                                <div className={` inline-flex rounded-full px-4 py-2 text-sm font-semibold shadow-sm shadow-slate-200/50 ${statusClasses[contact.status] ?? "bg-slate-100 text-slate-700"}`}>
+                                    {contact.status}
+                                </div>
+                                <div className="flex flex-wrap justify-center gap-2">
+                                    {contact.tags.map((tag) => (
+                                        <span key={tag} className="rounded-full px-3 py-1 text-xs font-semibold bg-green-100 text-green-800">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                    <span>{contact.bio}</span>
+                                    <span>{contact.email}</span>
+                                </div>
+
+                            </div>
+
+
+                        </aside>
+                        <div className="grid gap-3 mt-2 ">
                             <button className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-emerald-800">
                                 snoze 2 weeks
                             </button>
                             <button className="rounded-sm border border-slate-200 bg-slate-50 px-4 py-3 text-sm font-semibold text-slate-900 transition hover:bg-slate-100">
-                                Archive 
+                                Archive
                             </button>
                             <button className="rounded-sm border border-slate-200 bg-slate-50  px-4 py-3 text-sm font-semibold text-rose-700 transition hover:bg-rose-100">
                                 Delete
@@ -93,38 +98,64 @@ export default async function ProfilePage({ params }: { params: Promise<{ id: st
                         </div>
                     </div>
 
-                    
 
-                    <section className="space-y-6">
-                       
 
-                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center">
-                                
+                    <section className="space-y-6 flex-1 rounded-sm gap-6 p-6">
+
+
+                        <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                            <div className="rounded-sm border border-slate-200 bg-slate-50 p-6 text-center">
+
                                 <p className="mt-4 text-3xl font-semibold text-slate-900">{contact.days_since_contact}</p>
                                 <p className="text-sm text-slate-500">Days Since Contact</p>
                             </div>
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center">
-                               
+                            <div className="rounded-sm border border-slate-200 bg-slate-50 p-6 text-center">
+
                                 <p className="mt-4 text-3xl font-semibold text-slate-900">{contact.goal} </p>
                                 <p className="text-sm ">Goal (Days)</p>
                             </div>
-                            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-6 text-center">
+                            <div className="rounded-sm border border-slate-200 bg-slate-50 p-6 text-center">
                                 <p className="mt-4 text-3xl font-semibold text-slate-900">{contact.next_due_date}</p>
                                 <p className="text-sm text-slate-500">Next due</p>
                             </div>
-                            
-                           
+
+
                         </div>
 
-                        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
-                            <div className="gap-4">
-                                <div className="flex gap-4">
-                                    <div>Relationship Goal</div>
-                                    <div><button>Edit</button></div>
+                        <div className="rounded-sm border border-slate-200 bg-white p-8 shadow-sm">
+                            <div className=" flex justify-between gap-4">
+
+                                <div>Relationship Goal</div>
+                                <div className="bg-slate-200 p-1 rounded-sm"><button>Edit</button></div>
+
+                            </div>
+                            <div className="mt-3 text-sm text-slate-500     ">
+                                <h1>Connect every <span className="font-bold">30 days</span></h1>
+                            </div>
+
+                        </div>
+                        <div className="rounded-sm border border-slate-200 bg-white p-4 pt-5 shadow-sm">
+                            <div className=" flex justify-between gap-4">
+
+                                <div className="font-semibold">Quick Check-In</div>
+
+
+                            </div>
+                            <div className="mt-3 flex justify-between  text-sm text-slate-500     ">
+                                <div className="bg-slate-100 px-20 py-4 rounded-sm flex flex-col items-center">
+                                    <span className="text-xl"><BiPhoneCall /></span>
+                                    <h1>Call</h1>
+                                </div>
+                                <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
+                                    <span className="text-xl"><MdOutlineTextsms /></span>
+                                    <h1>Text</h1>
+                                </div>
+                                <div className="bg-slate-100 px-20 py-4 flex flex-col items-center  rounded-sm">
+                                    <span className="text-xl"><IoVideocamOutline />
+                                    </span>
+                                    <h1>Video</h1>
                                 </div>
                             </div>
-                            
                         </div>
                     </section>
                 </div>
